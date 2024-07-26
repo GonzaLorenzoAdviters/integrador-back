@@ -14,7 +14,7 @@ export class UsersService {
   create(createUserDto: CreateUserDto) {
     const user = this.userRepository.findOne({where:{email:createUserDto.email}})
 
-    if(user) throw new BadRequestException("Ya existe el usuario")
+    if(!user) throw new BadRequestException("Ya existe el usuario")
 
     createUserDto.password = hashPassword(createUserDto.password);
     return this.userRepository.save(createUserDto);

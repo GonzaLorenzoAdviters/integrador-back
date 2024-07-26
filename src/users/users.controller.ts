@@ -13,6 +13,7 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
+    console.log("AUTORIZADO")
     return this.usersService.create(createUserDto);
   }
 
@@ -21,6 +22,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);

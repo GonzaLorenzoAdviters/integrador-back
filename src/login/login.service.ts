@@ -27,7 +27,7 @@ export class LoginService {
     }
     else
     {
-      const token = this.jwtService.sign(data, {secret: jwtConstants.secret, expiresIn: 200 });
+      const token = this.jwtService.sign(data, {secret: jwtConstants.secret, expiresIn: 99999 });
       return {
         token: token,
       };
